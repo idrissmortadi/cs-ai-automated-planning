@@ -1,0 +1,51 @@
+
+ff: parsing domain file
+domain 'HAMILTONIAN-CYCLE' defined
+ ... done.
+ff: parsing problem file
+problem 'HAMILTONIAN-EXAMPLE' defined
+ ... done.
+
+
+
+Cueing down from goal distance:   24 into depth [1]
+                                  22            [1]
+                                  21            [1]
+                                  19            [1]
+                                  17            [1]
+                                  15            [1]
+                                  13            [1]
+                                  11            [1]
+                                   9            [1]
+                                   7            [1]
+                                   5            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: SELECT-START V12 N0 N1
+        1: MOVE-TO-NEXT V12 V11 N1 N2
+        2: MOVE-TO-NEXT V11 V10 N2 N3
+        3: MOVE-TO-NEXT V10 V9 N3 N4
+        4: MOVE-TO-NEXT V9 V8 N4 N5
+        5: MOVE-TO-NEXT V8 V7 N5 N6
+        6: MOVE-TO-NEXT V7 V6 N6 N7
+        7: MOVE-TO-NEXT V6 V4 N7 N8
+        8: MOVE-TO-NEXT V4 V5 N8 N9
+        9: MOVE-TO-NEXT V5 V2 N9 N10
+       10: MOVE-TO-NEXT V2 V3 N10 N11
+       11: MOVE-TO-NEXT V3 V1 N11 N12
+       12: COMPLETE-CYCLE V1 V12 N12
+       13: REACH-GOAL
+     
+
+time spent:    0.00 seconds instantiating 1652 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 73 facts and 1664 actions
+               0.00 seconds creating final representation with 74 relevant facts
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 15 states, to a max depth of 1
+               0.00 seconds total time
+

@@ -1,0 +1,22 @@
+*.pdf
+!report_*/**/*.pdf
+
+# Latex
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+.vscode
+.venv
+
+
+
+
+
+

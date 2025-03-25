@@ -6,24 +6,27 @@
     (visited ?v - vertex)              ; vertex v has been visited
     (current ?v - vertex)              ; current position in the path
     (start ?v - vertex)                ; starting vertex
-    (path-length ?n - count)          ; number of vertices visited so far
-    (next ?n1 ?n2 - count)            ; successor relation for counts
-    (total-vertices ?n - count)       ; total number of vertices in the graph
+    (start-selected)                   ; indicates if start vertex has been selected
+    (path-length ?n - count)           ; number of vertices visited so far
+    (next ?n1 ?n2 - count)             ; successor relation for counts
+    (total-vertices ?n - count)        ; total number of vertices in the graph
+    (back-at-start)                    ; true when we're back at start vertex
   )
   
   (:action select-start
     :parameters (?v - vertex ?zero ?one - count)
     :precondition (and 
-      (not (exists (?any - vertex) (start ?any)))  ; no start vertex selected yet
-      (path-length ?zero)                          ; path length is zero
-      (next ?zero ?one)                            ; one is the successor of zero
+      (not (start-selected))           ; no start vertex selected yet
+      (path-length ?zero)              ; path length is zero
+      (next ?zero ?one)                ; one is the successor of zero
     )
     :effect (and
-      (start ?v)                                   ; mark as start vertex
-      (current ?v)                                 ; set as current position
-      (visited ?v)                                 ; mark as visited
-      (not (path-length ?zero))                    ; update path length
-      (path-length ?one)                           ; path length is now one
+      (start ?v)                       ; mark as start vertex
+      (start-selected)                 ; mark that a start vertex has been selected
+      (current ?v)                     ; set as current position
+      (visited ?v)                     ; mark as visited
+      (not (path-length ?zero))        ; update path length
+      (path-length ?one)               ; path length is now one
     )
   )
   
@@ -57,6 +60,7 @@
     :effect (and
       (not (current ?last))           ; no longer at "last"
       (current ?first)                ; back at "first"
+      (back-at-start)                 ; mark that we're back at start
     )
   )
 )

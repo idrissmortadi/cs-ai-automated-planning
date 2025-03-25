@@ -16,6 +16,9 @@
     ; Initial path length is zero
     (path-length n0)
     
+    ; No start vertex selected yet
+    (not (start-selected))
+    
     ; Total number of vertices
     (total-vertices {TOTAL_VERTICES})
   )
@@ -23,8 +26,7 @@
   (:goal
     (and
       ; We've returned to the start vertex
-      (exists (?v - vertex) 
-        (and (start ?v) (current ?v)))
+      (back-at-start)
       
       ; All vertices have been visited
       {VISITED_GOALS}

@@ -68,42 +68,14 @@ def create_problem_file(output_path, graph, num_vertices):
     total_vertices = f"n{num_vertices}"
 
     # Create the content with substitutions
-    content = f"""(define (problem hamiltonian-example)
-  (:domain hamiltonian-cycle)
-  
-  (:objects
-    {vertex_objects}
-    {count_objects}
-  )
-  
-  (:init
-    ; Define the graph structure (edges)
-    {graph_edges}
-    
-    ; Define the count sequence for tracking path length
-    {count_sequence}
-    
-    ; Initial path length is zero
-    (path-length n0)
-    
-    ; Total number of vertices
-    (total-vertices {total_vertices})
-  )
-  
-  (:goal
-    (and
-      ; We've returned to the start vertex
-      (exists (?v - vertex) 
-        (and (start ?v) (current ?v)))
-      
-      ; All vertices have been visited
-      {visited_goals}
-      
-      ; Path length equals total vertices
-      (path-length {total_vertices})
-    )
-  )
-)"""
+    with open("problem-template.pddl", "r") as file:
+        content = file.read()
+        content = content.replace("{VERTEX_OBJECTS}", vertex_objects)
+        content = content.replace("{COUNT_OBJECTS}", count_objects)
+        content = content.replace("{GRAPH_EDGES}", graph_edges)
+        content = content.replace("{COUNT_SEQUENCE}", count_sequence)
+        content = content.replace("{VISITED_GOALS}", visited_goals)
+        content = content.replace("{TOTAL_VERTICES}", total_vertices)
 
     with open(output_path, "w") as file:
         file.write(content)

@@ -15,8 +15,17 @@
 .vscode
 .venv
 
-
-
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info
+*.egg
+*.DS_Store
+*.ipynb_checkpoints
+*.coverage
+*.coverage.*
+.pytest_cache
 
 
 

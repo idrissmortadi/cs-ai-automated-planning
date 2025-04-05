@@ -95,8 +95,7 @@
   (:goal
     (and
       ; We've returned to the start vertex
-      (exists (?v - vertex) 
-        (and (start ?v) (current ?v)))
+      (back-at-start)
       
       ; All vertices have been visited
       (visited v1)

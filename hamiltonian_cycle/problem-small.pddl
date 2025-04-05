@@ -8,18 +8,20 @@
   
   (:init
     ; Define the graph structure (edges)
-        (connected v1 v3)
+    (connected v1 v3)
     (connected v3 v1)
-    (connected v1 v4)
-    (connected v4 v1)
     (connected v1 v5)
     (connected v5 v1)
     (connected v2 v3)
     (connected v3 v2)
     (connected v2 v4)
     (connected v4 v2)
-    (connected v4 v5)
-    (connected v5 v4)
+    (connected v2 v5)
+    (connected v5 v2)
+    (connected v3 v4)
+    (connected v4 v3)
+    (connected v3 v5)
+    (connected v5 v3)
     
     ; Define the count sequence for tracking path length
         (next n0 n1)
@@ -31,6 +33,9 @@
     ; Initial path length is zero
     (path-length n0)
     
+    ; No start vertex selected yet
+    (not (start-selected))
+    
     ; Total number of vertices
     (total-vertices n5)
   )
@@ -38,8 +43,7 @@
   (:goal
     (and
       ; We've returned to the start vertex
-      (exists (?v - vertex) 
-        (and (start ?v) (current ?v)))
+      (back-at-start)
       
       ; All vertices have been visited
       (visited v1)

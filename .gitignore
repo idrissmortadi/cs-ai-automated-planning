@@ -12,6 +12,11 @@
 *.fdb_latexmk
 *.fls
 
+benchmarks/
+fast-downward-24.06.1/
+planning-lama/
+LPG-td-1.4/
+
 .vscode
 .venv
 
